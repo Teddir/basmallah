@@ -1,8 +1,14 @@
 'use client';
 
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-export default function Index(){
+export default function Index() {
   const router = useRouter()
-  return router.push('/ngaji')
+
+  useEffect(() => {
+    router.push('/ngaji')
+  }, [router])
+  
+  return null
 }
