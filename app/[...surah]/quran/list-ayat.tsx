@@ -1,10 +1,5 @@
-import localFont from 'next/font/local'
-import { cn } from "@/lib/utils";
-const myFont = localFont({
-  src: '../../fonts/arab/NotoNaskhArabic-Regular.ttf',
-  display: 'swap',
-})
-
+import ButtonAyat from './component/button-ayat';
+import { promises as fs } from 'fs';
 interface Ayat {
   id: string,
   sura: string,
@@ -12,24 +7,29 @@ interface Ayat {
   arabic_text: string,
   translation: string,
   footnotes: string
+  name: string,
+  name_translation: string,
 }
 
-export default function ListAyat({ listAyat = [] }) {
-  const list: Ayat[] = listAyat
+interface Surah {
+  name: string,
+  nAyah: number,
+  revelationOrder: number,
+  type: string,
+  start: number,
+  end: number,
+  translation: string,
+}
 
-  return list?.map((val, idx) => {
-    return (
-      <div key={idx}>
-        <h2 className={cn(
-          "mt-10 scroll-m-20 border-b pb-2 text-3xl tracking-tight transition-colors first:mt-0 text-right leading-[3.2rem]",
-          myFont.className,
-        )}>
-          {val?.arabic_text}
-        </h2>
-        <p className="leading-7 [&:not(:first-child)]:mt-6">
-          {val?.translation.replace(/\d+/g, '')} {`<${val?.id}>`}
-        </p>
-      </div>
-    )
+export default async function ListAyat({ listAyat = [] }) {
+  const file = await fs.readFile(process.cwd() + '/app/id-kemenag.json', 'utf8');
+  const data = JSON.parse(file);
+  const listAya: Ayat[] = listAyat
+  const listSurah: Surah[] = Object.entries(data ?? {})?.map(([_, item]) => item as Surah);
+  listAya.forEach((val, idx) => {
+    val.name = Object.values(listSurah)?.[idx]?.name
+    val.name_translation = Object.values(listSurah)?.[idx]?.translation
   })
+
+  return listAya?.map((val, idx) => <ButtonAyat key={idx} val={val} />)
 }

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/provider/theme-provider";
+import QueryClientTed from "@/client/query-client";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +28,10 @@ export default function Layout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <QueryClientTed>
+            {children}
+            <Toaster />
+          </QueryClientTed>
         </ThemeProvider>
       </body>
     </html>
