@@ -73,6 +73,9 @@ export default function ButtonAyat({ key, val }: BA) {
           )}>
             {val?.arabic_text}
           </h2>
+          <p className="leading-7 [&:not(:first-child)]:mt-2 text-left">
+            {val?.translation.replace(/\d+/g, '')} {`<${val?.aya}>`}
+          </p>
           <div className='relative w-full'>
             <div className='w-full justify-end flex'>
               <div className={cn(
@@ -82,13 +85,7 @@ export default function ButtonAyat({ key, val }: BA) {
             <div className={cn(
               validId ? 'bg-primary' : 'bg-border',
               'w-full h-0.5')} />
-            <div className={cn(
-              validId ? 'bg-primary' : 'bg-border',
-              'w-0.5 h-2 left-0')} />
           </div>
-          <p className="leading-7 [&:not(:first-child)]:mt-2 text-left">
-            {val?.translation.replace(/\d+/g, '')} {`<${val?.aya}>`}
-          </p>
         </button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">

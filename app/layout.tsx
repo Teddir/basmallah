@@ -14,10 +14,10 @@ export const metadata: Metadata = {
 
 export default function Layout({
   children,
-  // ngaji,
+  ui_1,
 }: Readonly<{
   children: React.ReactNode;
-  // ngaji: React.ReactNode;
+  ui_1: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -29,7 +29,8 @@ export default function Layout({
           disableTransitionOnChange
         >
           <QueryClientTed>
-            {children}
+            {/* {children} */}
+            {ui_1}
             <Toaster />
           </QueryClientTed>
         </ThemeProvider>

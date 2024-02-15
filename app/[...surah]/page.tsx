@@ -21,7 +21,7 @@ export default async function AyatQuran({ params }: AyatQuranProps) {
       direction="horizontal"
       className="w-full rounded-lg border max-h-screen"
     >
-      <ResizablePanel defaultSize={50}>
+      <ResizablePanel defaultSize={50} minSize={45}>
         <ScrollArea className="max-h-screen h-screen">
           <div className="p-32  flex flex-col gap-8">
             {<ListAyat listAyat={data?.result} />}
