@@ -22,7 +22,7 @@ interface Surah {
 }
 
 export default async function ListAyat({ listAyat = [] }) {
-  const file = await fs.readFile(process.cwd() + '/app/id-kemenag.json', 'utf8');
+  const file = await fs.readFile(process.cwd() + '/app/json/id-kemenag.json', 'utf8');
   const data = JSON.parse(file);
   const listAya: Ayat[] = listAyat
   const listSurah: Surah[] = Object.entries(data ?? {})?.map(([_, item]) => item as Surah);

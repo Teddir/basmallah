@@ -13,8 +13,8 @@ interface Surah {
 }
 
 export default async function ListSurah({ id = 0 }) {
-  const file = await fs.readFile(process.cwd() + '/app/surah.json', 'utf8');
-  const fileTranslate = await fs.readFile(process.cwd() + '/app/id-kemenag.json', 'utf8');
+  const file = await fs.readFile(process.cwd() + '/app/json/surah.json', 'utf8');
+  const fileTranslate = await fs.readFile(process.cwd() + '/app/json/id-kemenag.json', 'utf8');
   const data = JSON.parse(file);
   const dataTranslate = JSON.parse(fileTranslate);
 
