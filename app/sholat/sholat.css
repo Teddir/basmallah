@@ -1,0 +1,36 @@
+.card {
+    transition: transform 0.5s, opacity 0.3s;
+    opacity: 0;
+    transform: scale(0.8);
+    box-shadow: 5px 5px 10px rgba(198, 229, 207, 0.4);
+  }
+  
+  .center {
+    transform: scale(1);
+    opacity: 1;
+    /*
+    add border
+    border primary
+    */
+  }
+  
+  .left {
+    transform: translateX(-1% * 100vw) scale(0.8);
+    opacity: 0.5;
+  }
+  
+  .right {
+    transform: translateX(1% * 100vw) scale(0.8);
+    opacity: 0.5;
+  }
+
+  .left .listBorder{
+    border-color: rgb(234, 234, 234);
+    box-shadow: none;
+  }
+
+  .right .listBorder{
+    border-color: rgb(234, 234, 234);
+    box-shadow: none;
+  }
+  
