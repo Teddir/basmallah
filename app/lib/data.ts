@@ -58,3 +58,29 @@ export async function getSholat({
     return [];
   }
 }
+
+export async function getQuran({
+  surah,
+  type = "surat",
+}: {
+  surah?: number;
+  type: string; //"surat" | "tafsir" | "surah" | 'juz';
+}) {
+  try {
+    noStore();
+    let isDetailSurat = !surah || surah?.toLocaleString()?.length <= 0;
+    let uri = `https://equran.id/api`;
+    uri = surah == 2 ? uri : `${uri}/v2`;
+    uri = `${uri}/${type.toLocaleLowerCase() == "surah" ? "surat" : type?.toLocaleLowerCase()}`;
+    uri = isDetailSurat ? uri : `${uri}/${surah}`;
+      
+    const res = await fetch(uri, {
+      method: "GET",
+    });
+    const response = await res.json();
+    const datas = surah == 2 ?response :response.data;
+    return datas;
+  } catch (error) {
+    error instanceof Error && console.log(error.message);
+  }
+}

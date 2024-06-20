@@ -12,9 +12,9 @@ export default async function Sholat({
     page?: string;
   };
 }) {
-  const query = searchParams?.query || '';
+  const query = searchParams?.query || "";
 
-  let datasSholat: DataSholat[] = await getSholat({city:query});
+  let datasSholat: DataSholat[] = await getSholat({ city: query });
 
   return (
     <section className="w-full min-h-screen bg-white overflow-hidden relative">

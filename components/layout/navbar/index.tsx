@@ -39,7 +39,7 @@ export default function Navbar() {
           <div
             className={clsx(
               poppins.className,
-              "absolute pr-4 pt-2 font-medium tracking-[1.5px] uppercase text-[#A8D7B5]"
+              "absolute pr-4 pt-2 font-medium tracking-[1.5px] uppercase text-primary"
             )}
           >
             {text?.split("")?.map((a, b) => a)}
