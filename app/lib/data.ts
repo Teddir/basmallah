@@ -71,15 +71,33 @@ export async function getQuran({
     let isDetailSurat = !surah || surah?.toLocaleString()?.length <= 0;
     let uri = `https://equran.id/api`;
     uri = surah == 2 ? uri : `${uri}/v2`;
-    uri = `${uri}/${type.toLocaleLowerCase() == "surah" ? "surat" : type?.toLocaleLowerCase()}`;
+    uri = `${uri}/${
+      type.toLocaleLowerCase() == "surah" ? "surat" : type?.toLocaleLowerCase()
+    }`;
     uri = isDetailSurat ? uri : `${uri}/${surah}`;
-      
+
     const res = await fetch(uri, {
       method: "GET",
     });
     const response = await res.json();
-    const datas = surah == 2 ?response :response.data;
+    const datas = surah == 2 ? response : response.data;
     return datas;
+  } catch (error) {
+    error instanceof Error && console.log(error.message);
+  }
+}
+
+export async function getAlmatsurat({
+  time = "pagi",
+  type = "kubro",
+}: {
+  time: string | "pagi" | "petang";
+  type: string | "kubro" | "sugro";
+}) {
+  try {
+    let res = require(`./json/almatsurat/${time.toLocaleLowerCase()}/almatsurat-${type.toLocaleLowerCase()}.json`);
+
+    return res || [];
   } catch (error) {
     error instanceof Error && console.log(error.message);
   }
