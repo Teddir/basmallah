@@ -2,14 +2,15 @@
 
 import { useModal } from "@/context/modal";
 import clsx from "clsx";
-import { Poppins } from "next/font/google";
 import Image from "next/image";
 import React from "react";
+import { Poppins } from 'next/font/google';
 
 const poppins = Poppins({
-  weight: ["400", "700"], // Pilih berat yang ingin Anda gunakan
-  subsets: ["latin"], // Pilih subset yang Anda butuhkan
-  display: "swap",
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-poppins',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
 });
 
 let text = "Menu";
