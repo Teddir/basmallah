@@ -4,15 +4,16 @@ import { useModal } from "@/context/modal";
 import Image from "next/image";
 import React, { useEffect } from "react";
 import { animateModalOpen, animateModalClose } from "@/utils/animations";
-import { Poppins } from "next/font/google";
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Poppins } from 'next/font/google';
 
 const poppins = Poppins({
-  weight: ["400", "700"], // Pilih berat yang ingin Anda gunakan
-  subsets: ["latin"], // Pilih subset yang Anda butuhkan
-  display: "swap",
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-poppins',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
 });
 
 const Modal: React.FC = () => {
