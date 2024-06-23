@@ -30,7 +30,7 @@ export default function List({ dataSurah = [] }: { dataSurah: Surah[] }) {
 
   return (
     <>
-      <div className="w-[40%] hidden sm:flex flex-col gap-10">
+      <div className="w-[40%] items-end hidden sm:flex flex-col gap-10 sticky top-10 self-start">
         <div className="flex flex-col gap-10">
           <p className="text-3xl font-semibold uppercase text-gray-700">
             List {nameList}
@@ -83,7 +83,7 @@ export default function List({ dataSurah = [] }: { dataSurah: Surah[] }) {
                 >
                   <p
                     className={clsx(
-                      "text-sm font-normal  leading-5 uppercase tracking-widest",
+                      "text-sm font-normal  leading-5 uppercase tracking-widest select-none",
                       {
                         "text-gray-700": actived,
                         "text-gray-300": !actived,

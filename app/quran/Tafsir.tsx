@@ -13,7 +13,7 @@ export default function Tafsir({ dataTafsir }: { dataTafsir: TafsirSurah }) {
               <div key={b} className="w-full flex flex-col space-y-4">
                 <div className="w-full bg-primary px-3 p-2 justify-between items-center flex">
                   <p className="text-xs text-left text-[#124C5D]">
-                    {dataTafsir.namaLatin}
+                    {dataTafsir.namaLatin || dataTafsir.nama_latin}
                   </p>
                   <p className="text-xs text-left text-[#124C5D]">
                     Ayat-{a.ayat}

@@ -10,6 +10,7 @@ interface Surah {
   nomor: number;
   nama: string;
   namaLatin: string;
+  nama_latin?:string;
   jumlahAyat: number;
   tempatTurun: string;
   arti: string;
