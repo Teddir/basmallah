@@ -16,6 +16,7 @@ const dataSurah = [
 ];
 export default function List() {
   const searchParams = useSearchParams();
+  const isShow = searchParams.get("show")?.toString() == 'true'
   const pathname = usePathname();
   const { replace } = useRouter();
 
@@ -29,6 +30,7 @@ export default function List() {
       const params = new URLSearchParams(searchParams);
       if (menu) {
         params.set("list", menu.toLocaleString());
+        isShow && params.set("show", 'false');
       } else {
         params.delete("list");
       }
@@ -73,7 +75,7 @@ export default function List() {
           </div>
         </div>
       </div>
-      <div className="hidden fixed inset-y-0 bg-white flex-col gap-10 ">
+      <div className={clsx("fixed inset-y-0 bg-white flex-col gap-10 w-full z-40", isShow ? 'flex sm:hidden' : 'hidden')}>
         <div className="flex flex-col gap-4 py-4">
           <p className="text-xl font-semibold uppercase text-gray-700">
             List {nameList}

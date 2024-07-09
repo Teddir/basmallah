@@ -25,7 +25,7 @@ export default function Navbar() {
   return (
     <nav className="px-4 flex relative z-20">
       <div
-        className="absolute -right-[40px] -top-[40px] group/navbar cursor-pointer"
+        className="absolute left-1/2 -top-20 -translate-x-1/2 group/navbar cursor-pointer"
         onClick={handleShowModal}
       >
         <div className="relative w-full h-full items-center justify-center flex">
@@ -40,7 +40,7 @@ export default function Navbar() {
           <div
             className={clsx(
               poppins.className,
-              "absolute pr-4 pt-2 font-medium tracking-[1.5px] uppercase text-primary"
+              "absolute pt-14 font-medium tracking-[1.5px] uppercase text-primary"
             )}
           >
             {text?.split("")?.map((a, b) => a)}

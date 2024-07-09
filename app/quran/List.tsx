@@ -6,6 +6,7 @@ import { useMemo } from "react";
 
 export default function List({ dataSurah = [] }: { dataSurah: Surah[] }) {
   const searchParams = useSearchParams();
+  const isShow = searchParams.get("show")?.toString() == 'true'
   const pathname = usePathname();
   const { replace } = useRouter();
 
@@ -19,6 +20,7 @@ export default function List({ dataSurah = [] }: { dataSurah: Surah[] }) {
       const params = new URLSearchParams(searchParams);
       if (menu) {
         params.set("list", menu.toLocaleString());
+        isShow && params.set("show", 'false');
       } else {
         params.delete("list");
       }
@@ -37,14 +39,14 @@ export default function List({ dataSurah = [] }: { dataSurah: Surah[] }) {
           </p>
           <div>
             {dataSurah.map((a, b) => {
-              let actived = Number(searchParams.get("list")) == a.nomor;
+              let actived = Number(searchParams.get("list")) == (a.nomor || a.number);
               actived =
                 !Number(searchParams.get("list")) && b == 0 ? true : actived;
 
               return (
                 <div
                   key={b}
-                  onClick={() => handleChange(a.nomor)}
+                  onClick={() => handleChange(a.nomor || a.number)}
                   className="flex flex-row items-center gap-2 cursor-pointer"
                 >
                   <p
@@ -56,7 +58,7 @@ export default function List({ dataSurah = [] }: { dataSurah: Surah[] }) {
                       }
                     )}
                   >
-                    - {a.namaLatin}
+                    - {a.namaLatin || a.englishName}
                   </p>
                 </div>
               );
@@ -64,21 +66,21 @@ export default function List({ dataSurah = [] }: { dataSurah: Surah[] }) {
           </div>
         </div>
       </div>
-      <div className="hidden fixed inset-y-0 bg-white flex-col gap-10 ">
+      <div className={clsx("fixed inset-y-0 bg-white flex-col gap-10 w-full z-40", isShow ? 'flex sm:hidden' : 'hidden')}>
         <div className="flex flex-col gap-4 py-4">
           <p className="text-xl font-semibold uppercase text-gray-700">
             List {nameList}
           </p>
           <div className="max-h-screen overflow-y-auto pb-[12rem]">
             {dataSurah.map((a, b) => {
-              let actived = Number(searchParams.get("list")) == a.nomor;
+              let actived = Number(searchParams.get("list")) == (a.nomor || a.number);
               actived =
                 !Number(searchParams.get("list")) && b == 0 ? true : actived;
 
               return (
                 <div
                   key={b}
-                  onClick={() => handleChange(a.nomor)}
+                  onClick={() => handleChange((a?.nomor || a.number))}
                   className="flex flex-row items-center gap-2 cursor-pointer"
                 >
                   <p
@@ -90,7 +92,7 @@ export default function List({ dataSurah = [] }: { dataSurah: Surah[] }) {
                       }
                     )}
                   >
-                    - {a.namaLatin}
+                    - {a.namaLatin || a.englishName}
                   </p>
                 </div>
               );

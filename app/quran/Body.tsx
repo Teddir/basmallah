@@ -14,18 +14,18 @@ export default async function Body({
   };
 }) {
   const list = searchParams?.list || "1";
-  const query = searchParams?.query || "surat";
+  const query = searchParams?.query || "surah";
 
-  const dataSurah: Surah[] = (await getQuran({ type: "surat" })) || [];
-  const dataAyatTafsir =
+  const dataSurah: Surah[] = (await getQuran({ type: "list-surah" })) || [];
+  const dataAyat =
     (await getQuran({ type: query, surah: Number(list) })) || {};
 
   return (
     <main className="min-h-screen mt-28 flex flex-row w-10/12 gap-20 mx-auto relative">
       {query?.toLocaleLowerCase() === "tafsir" ? (
-        <Tafsir dataTafsir={dataAyatTafsir} />
+        <Tafsir dataTafsir={dataAyat} />
       ) : (
-        <Ayat dataAyat={dataAyatTafsir} />
+        <Ayat dataAyat={dataAyat} />
       )}
       <List dataSurah={dataSurah || []} />
     </main>

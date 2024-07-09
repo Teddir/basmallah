@@ -12,7 +12,7 @@ export default function Quran({
   };
 }) {
   return (
-    <section className="w-full min-h-screen bg-white relative">
+    <section className="w-full min-h-screen bg-white relative overflow-hidden">
       <Navbar />
       <Body searchParams={searchParams} />
       <MenuQuran />

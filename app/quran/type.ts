@@ -8,8 +8,10 @@ interface AudioFull {
 
 interface Surah {
   nomor: number;
+  number:number;
+  englishName:string;
   nama: string;
-  namaLatin: string;
+  namaLatin?: string;
   nama_latin?:string;
   jumlahAyat: number;
   tempatTurun: string;

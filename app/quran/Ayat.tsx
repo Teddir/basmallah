@@ -4,7 +4,7 @@ export default function Ayat({dataAyat}: {
   dataAyat: SurahDetails
 }) {
   return (
-    <div className="w-full flex flex-col space-y-8">
+    <div className="w-full flex flex-col space-y-8 pb-40">
       {dataAyat?.ayat?.length <=0 ? null : dataAyat?.ayat?.map((a, b) => {
         const textArti = a.teksIndonesia || a.idn;
         const partsArti = textArti?.split(/(\d)/); // Split the text at the number

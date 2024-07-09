@@ -75,7 +75,8 @@ export async function getQuran({
       type.toLocaleLowerCase() == "surah" ? "surat" : type?.toLocaleLowerCase()
     }`;
     uri = isDetailSurat ? uri : `${uri}/${surah}`;
-
+    uri = type == 'list-surah' ? 'http://api.alquran.cloud/v1/surah' : uri
+    
     const res = await fetch(uri, {
       method: "GET",
     });

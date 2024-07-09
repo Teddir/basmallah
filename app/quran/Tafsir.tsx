@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Tafsir({ dataTafsir }: { dataTafsir: TafsirSurah }) {
   return (
-    <div className="w-full flex flex-col space-y-8">
+    <div className="w-full flex flex-col space-y-8 pb-40">
       {dataTafsir?.tafsir?.length <= 0
         ? null
         : dataTafsir?.tafsir?.map((a, b) => {
