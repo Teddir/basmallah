@@ -1,4 +1,5 @@
 import { unstable_noStore as noStore } from "next/cache";
+import { promises as fs } from "fs";
 
 export async function getSholat({
   city,
@@ -75,8 +76,8 @@ export async function getQuran({
       type.toLocaleLowerCase() == "surah" ? "surat" : type?.toLocaleLowerCase()
     }`;
     uri = isDetailSurat ? uri : `${uri}/${surah}`;
-    uri = type == 'list-surah' ? 'http://api.alquran.cloud/v1/surah' : uri
-    
+    uri = type == "list-surah" ? "http://api.alquran.cloud/v1/surah" : uri;
+
     const res = await fetch(uri, {
       method: "GET",
     });
@@ -101,5 +102,18 @@ export async function getAlmatsurat({
     return res || [];
   } catch (error) {
     error instanceof Error && console.log(error.message);
+  }
+}
+
+export async function getHadist({ id }: { id: string }) {
+  try {
+    const datas = await fs.readFile(
+      process.cwd() + `/app/lib/json/hadist/${id}.json`,
+      "utf8"
+    );
+    return JSON.parse(datas || "");
+  } catch (error) {
+    error instanceof Error && console.log(error?.message);
+    return [];
   }
 }
