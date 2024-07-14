@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
+import BodySearch from "./BodySearch";
 
 const listMainHadist: string[] = [
   "abu-daud",
@@ -18,7 +19,7 @@ const listMainHadist: string[] = [
   "tirmidzi",
 ];
 
-export default function Body() {
+export default function Body({ dataHadist }: { dataHadist: HadistItem[] }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -30,9 +31,9 @@ export default function Body() {
       setLoading(true);
       const params = new URLSearchParams(searchParams);
       if (term) {
-        params.set("query", term);
+        params.set(type, term);
       } else {
-        params.delete("query");
+        params.delete(type);
       }
       replace(`${pathname}?${params.toString()}`);
     } catch (error) {
@@ -42,7 +43,7 @@ export default function Body() {
     }
   }, 300);
 
-  return (
+  return !searchParams.get("query")?.toString() ? (
     <div className="h-screen w-screen overflow-hidden relative">
       <section className="h-1/2 w-screen bg-primary overflow-hidden relative">
         <div className="flex w-full h-full">
@@ -82,10 +83,10 @@ export default function Body() {
                 onClick={() => handleSearch(a)}
                 className={clsx(
                   "px-4 py-2 ring-1 ring-primary/50 hover:ring-primary rounded-full text-base text-center text-[#124C5D] hover:bg-primary transition-all duration-100 delay-75  cursor-pointer",
-                {
+                  {
                     "bg-primary": isActive,
                     "bg-primary/10": !isActive,
-                }
+                  }
                 )}
               >
                 <p className="capitalize select-none">
@@ -110,5 +111,13 @@ export default function Body() {
         </div>
       </section>
     </div>
+  ) : (
+    <BodySearch
+      handleSearch={handleSearch}
+      queryValue={searchParams.get("query")?.toString() || ""}
+      searchValue={searchParams.get("search")?.toString() || ""}
+      listMainHadist={listMainHadist}
+      dataHadist={dataHadist}
+    />
   );
 }

@@ -105,13 +105,68 @@ export async function getAlmatsurat({
   }
 }
 
-export async function getHadist({ id }: { id: string }) {
+async function readJsonFiles({ listMainHadist }: { listMainHadist: string[] }) {
   try {
-    const datas = await fs.readFile(
-      process.cwd() + `/app/lib/json/hadist/${id}.json`,
-      "utf8"
+    const fileReadPromises = listMainHadist.map((a) =>
+      fs.readFile(process.cwd() + `/app/lib/json/hadist/${a}.json`, "utf8")
     );
-    return JSON.parse(datas || "");
+
+    const fileContents = await Promise.all(fileReadPromises);
+    const jsonData = fileContents.map((content, b) => {
+      const datas = JSON.parse(content);
+      const isDatas = datas.map((element: { imam: string }) => {
+        element.imam = listMainHadist[b];
+        return element;
+      });
+      return isDatas;
+    });
+    const combinedData = jsonData.reduce((acc, data) => acc.concat(data), []);
+
+    return combinedData;
+  } catch (error) {
+    console.error("Error reading files:", error);
+  }
+}
+
+export async function getHadist({
+  id,
+  search,
+}: {
+  id: string;
+  search: string;
+}) {
+  try {
+    if (!id) throw new Error("id not found");
+
+    const listMainHadist: string[] = [
+      "abu-daud",
+      "ahmad",
+      "bukhari",
+      "darimi",
+      "ibnu-majah",
+      "malik",
+      "muslim",
+      "nasai",
+      "tirmidzi",
+    ];
+    if (listMainHadist.indexOf(id) == -1) {
+      const datas: HadistItem[] = await readJsonFiles({
+        listMainHadist,
+      });
+      return datas.filter((a) => a.id.includes(search) || a.imam.includes(id));
+    } else {
+      const val = await fs.readFile(
+        process.cwd() + `/app/lib/json/hadist/${id}.json`,
+        "utf8"
+      );
+      const isVal: HadistItem[] = JSON.parse(val || "");
+      return isVal
+        .map((a, b) => {
+          a.imam = id;
+          return a;
+        })
+        .filter((a) => a.id.includes(search));
+    }
   } catch (error) {
     error instanceof Error && console.log(error?.message);
     return [];
