@@ -31,6 +31,7 @@ export default function Body({ dataHadist }: { dataHadist: HadistItem[] }) {
       setLoading(true);
       const params = new URLSearchParams(searchParams);
       if (term) {
+        params.delete('id');
         params.set(type, term);
       } else {
         params.delete(type);
@@ -116,6 +117,7 @@ export default function Body({ dataHadist }: { dataHadist: HadistItem[] }) {
       handleSearch={handleSearch}
       queryValue={searchParams.get("query")?.toString() || ""}
       searchValue={searchParams.get("search")?.toString() || ""}
+      idValue={searchParams.get("id")?.toString() || ""}
       listMainHadist={listMainHadist}
       dataHadist={dataHadist}
     />

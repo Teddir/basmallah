@@ -19,7 +19,7 @@ export default async function Body({
     (await getAlmatsurat({ time: list, type: query })) || [];
 
   return (
-    <main className="min-h-screen my-28 flex flex-row w-10/12 gap-20 mx-auto relative">
+    <main className="min-h-screen my-28 flex flex-row sm:w-10/12 w-[86%] gap-20 mx-auto relative">
       <PagiPetang dataDzikir={dataDzikirAlmasurat} />
       <List />
     </main>

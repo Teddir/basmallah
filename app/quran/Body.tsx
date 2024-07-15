@@ -21,7 +21,7 @@ export default async function Body({
     (await getQuran({ type: query, surah: Number(list) })) || {};
 
   return (
-    <main className="min-h-screen mt-28 flex flex-row w-10/12 gap-20 mx-auto relative">
+    <main className="min-h-screen mt-28 flex flex-row sm:w-10/12 w-[86%] gap-20 mx-auto relative">
       {query?.toLocaleLowerCase() === "tafsir" ? (
         <Tafsir dataTafsir={dataAyat} />
       ) : (
