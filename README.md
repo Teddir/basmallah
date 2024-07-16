@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Basmallah
 
-## Getting Started
+**Basmallah** adalah aplikasi yang berisi kumpulan Dzikir, Al-Quran, Hadist, dan Jadwal sholat untuk membantu umat Muslim dalam menjalankan ibadah sehari-hari.
 
-First, run the development server:
+## Fitur
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Dzikir**: Kumpulan dzikir harian yang dapat dibaca setiap saat.
+- **Al-Quran**: Akses mudah ke seluruh ayat Al-Quran dengan terjemahan.
+- **Hadist**: Kumpulan hadist shahih dari berbagai sumber terpercaya.
+- **Jadwal Sholat**: Informasi waktu sholat harian berdasarkan lokasi pengguna.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Sumber Data
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Hadist**: [Hadith API](https://github.com/gadingnst/hadith-api)
+- **Jadwal Sholat**: [Aladhan.com](https://aladhan.com)
+- **Dzikir**: [Muslim API](https://github.com/Otang45/muslim-api)
+- **Al-Quran**: [Al-Quran API](https://alquran.cloud/api) dan [EQuran API](https://equran.id/api)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Hadist yang Tersedia
 
-## Learn More
+- Abu Daud
+- Ahmad
+- Bukhari
+- Darimi
+- Ibnu Majah
+- Malik
+- Muslim
+- Nasai
+- Tirmidzi
 
-To learn more about Next.js, take a look at the following resources:
+## Dzikir yang Tersedia
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Al-Ma'tsurat Pagi Kubro
+- Al-Ma'tsurat Pagi Sugro
+- Al-Ma'tsurat Petang Kubro
+- Al-Ma'tsurat Petang Sugro
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Instalasi
 
-## Deploy on Vercel
+1. Clone repositori ini:
+    ```bash
+    git clone https://github.com/Teddir/basmallah.git
+    ```
+2. Masuk ke direktori proyek:
+    ```bash
+    cd basmallah
+    ```
+3. Install dependencies:
+    ```bash
+    npm install
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Penggunaan
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Jalankan aplikasi:
+    ```bash
+    npm start
+    ```
+2. Akses aplikasi melalui browser di alamat `http://localhost:3000`.
+
+## Kontribusi
+
+Kami menyambut kontribusi dari siapa pun. Silakan buat *pull request* untuk menambahkan fitur baru atau memperbaiki bug.
+
+### Persyaratan Kontribusi
+
+Agar kontribusi Anda sesuai dengan standar proyek ini, mohon ikuti langkah-langkah berikut:
+
+1. **Fork repositori ini** ke akun GitHub Anda.
+2. **Clone repositori fork** ke mesin lokal Anda:
+    ```bash
+    git clone https://github.com/Teddir/basmallah.git
+    ```
+3. Buat *branch* baru untuk fitur atau perbaikan bug Anda:
+    ```bash
+    git checkout -b nama-branch-anda
+    ```
+4. Lakukan perubahan yang diperlukan dan commit perubahan tersebut sesuai dengan konvensi commit berikut:
+    - `feat`: Penambahan fitur baru.
+    - `fix`: Perbaikan bug.
+    - `docs`: Perubahan atau penambahan dokumentasi.
+    - `style`: Perbaikan format kode (white-space, formatting, missing semi-colons, dll).
+    - `refactor`: Perubahan kode yang tidak memperbaiki bug atau menambah fitur.
+    - `test`: Penambahan atau perbaikan tes.
+    - `chore`: Pembaruan tugas build, manajemen package, dll.
+    ```bash
+    git commit -m "feat: deskripsi singkat tentang perubahan Anda"
+    ```
+5. Push *branch* ke repositori fork Anda:
+    ```bash
+    git push origin nama-branch-anda
+    ```
+6. Buka *pull request* di repositori asli dan jelaskan perubahan yang Anda buat.
+
+### Panduan Penulisan Kode
+
+- Pastikan kode Anda bersih dan mudah dibaca.
+- Ikuti konvensi penamaan yang sudah ada.
+- Sertakan komentar yang jelas dan informatif jika diperlukan.
+- Tambahkan atau perbarui tes unit untuk fitur atau perbaikan bug yang Anda buat.
+
+## Lisensi
+
+Proyek ini dilisensikan di bawah [MIT License](LICENSE).
+
+---
+
+Semoga aplikasi ini bermanfaat untuk kita semua. Jika ada saran atau masukan, jangan ragu untuk menghubungi kami.
+
+---
+
+Terima kasih.
