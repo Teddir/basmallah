@@ -19,7 +19,7 @@ export default async function Hadist({
 
   return (
     <section className="w-full min-h-screen bg-white overflow-hidden">
-      <Navbar />
+      {(query?.length > 0 || search?.length > 0) && <Navbar />}
       <Suspense fallback={<p>Loading hadist...</p>}>
         <Body dataHadist={dataHadist || []} />
       </Suspense>

@@ -31,7 +31,7 @@ export default function Body({ dataHadist }: { dataHadist: HadistItem[] }) {
       setLoading(true);
       const params = new URLSearchParams(searchParams);
       if (term) {
-        params.delete('id');
+        params.delete("id");
         params.set(type, term);
       } else {
         params.delete(type);
@@ -71,8 +71,8 @@ export default function Body({ dataHadist }: { dataHadist: HadistItem[] }) {
         </div>
       </section>
 
-      <section className="h-1/2 w-screen">
-        <div className="p-24 flex flex-wrap justify-center items-center gap-3">
+      <section className="h-1/2 w-screen overflow-y-scroll">
+        <div className="sm:px-24 py-24 flex flex-wrap justify-center items-center gap-3">
           {listMainHadist?.map((a, b) => {
             let isActive =
               a.toLocaleLowerCase() ==
@@ -90,21 +90,20 @@ export default function Body({ dataHadist }: { dataHadist: HadistItem[] }) {
                   }
                 )}
               >
-                <p className="capitalize select-none">
+                <p className="text-xs sm:text-base capitalize select-none">
                   Hadist {a.replaceAll("-", " ")}
                 </p>
               </div>
             );
           })}
         </div>
-        ´
       </section>
 
       <section className="search fixed w-full top-[47%]">
         <div className="justify-center items-center flex">
           <input
             type="text"
-            className="peer block py-4 px-5 rounded-full bg-[#C6E5CF] w-[40%] sm:max-w-xl text-base focus:ring-[#5E7765] z-20 placeholder-gray-900"
+            className="peer block py-4 px-5 rounded-full bg-[#C6E5CF] w-[80%] sm:w-[40%] sm:max-w-xl text-base focus:ring-[#5E7765] z-20 placeholder-gray-900"
             defaultValue={searchParams.get("query")?.toString()}
             placeholder="Cari Hadist"
             onChange={(e) => handleSearch(e.target.value)}
