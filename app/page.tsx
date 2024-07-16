@@ -1,9 +1,10 @@
-import Navbar from "@/components/layout/navbar";
+"use client";
+import { useModal } from "@/context/modal";
+import { useEffect } from "react";
 
 export default function Home() {
-  return (
-    <section className="w-full min-h-screen bg-white overflow-hidden items-center ">
-      <Navbar/>
-    </section>
-  );
+  const { showModal } = useModal();
+
+  useEffect(() => showModal(""), []);
+  return null;
 }
