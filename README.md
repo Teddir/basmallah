@@ -1,5 +1,7 @@
 # Basmallah
 
+![alt text](https://basmallah.vercel.app/favicon.ico)
+
 **Basmallah** adalah aplikasi yang berisi kumpulan Dzikir, Al-Quran, Hadist, dan Jadwal sholat untuk membantu umat Muslim dalam menjalankan ibadah sehari-hari.
 
 ## Fitur
@@ -8,6 +10,12 @@
 - **Al-Quran**: Akses mudah ke seluruh ayat Al-Quran dengan terjemahan.
 - **Hadist**: Kumpulan hadist shahih dari berbagai sumber terpercaya.
 - **Jadwal Sholat**: Informasi waktu sholat harian berdasarkan lokasi pengguna.
+
+![alt text](https://basmallah.vercel.app/images/ss/ss-dzikir.png)
+![alt text](https://basmallah.vercel.app/images/ss/ss-surah.png)
+![alt text](https://basmallah.vercel.app/images/ss/ss-hadist-search.png)
+![alt text](https://basmallah.vercel.app/images/ss/ss-hadist.png)
+![alt text](https://basmallah.vercel.app/images/ss/ss-jadwal-sholat.png)
 
 ## Sumber Data
 
