@@ -123,16 +123,16 @@ export default function Body({ datas = [] }: { datas: DataSholat[] }) {
   }, 300);
 
   return (
-    <div className="flex flex-col gap-[68px] justify-center items-center min-h-screen">
+    <div className="flex flex-col gap-10 sm:gap-[68px] justify-center items-center min-h-screen">
       <div className="flex flex-col text-center space-y-2 z-20">
-        <p className="text-3xl font-normal">{timeRemaining} menuju</p>
-        <p className="text-4xl font-semibold">{nextPrayerTime}</p>
+        <p className="text-xl sm:text-3xl font-normal">{timeRemaining} menuju</p>
+        <p className="text-xl sm:text-4xl font-semibold">{nextPrayerTime}</p>
       </div>
       <input
         type="text"
-        className="peer block py-4 px-5 rounded-full bg-primary w-[70%] sm:max-w-xl text-base focus:ring-[#5E7765] z-20 placeholder-gray-900"
+        className="peer block py-4 px-5 rounded-full bg-primary w-[70%] sm:max-w-xl text-xs sm:text-base focus:ring-[#5E7765] z-20 placeholder-gray-900"
         defaultValue={searchParams.get("query")?.toString()}
-        placeholder="Jakarta City Time (Search by Province)"
+        placeholder="Search by Province (Jakarta)"
         onChange={(e) => handleSearch(e.target.value)}
       />
       {loading ? (

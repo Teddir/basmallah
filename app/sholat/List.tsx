@@ -60,7 +60,7 @@ const ListSholat = ({
             return (
               <div
                 key={index}
-                className={`card ${position} min-w-[424px] xl:min-w-[824px] select-none cursor-pointer hover:opacity-[1]`}
+                className={`card ${position}  sm:min-w-[424px] xl:min-w-[824px] select-none cursor-pointer hover:opacity-[1]`}
                 onClick={() =>
                   position == "left"
                     ? handleClickPrev()
@@ -76,7 +76,7 @@ const ListSholat = ({
                       {data?.address}
                     </p>
                   </div>
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-wrap items-center gap-2 justify-between">
                     {data?.time_pray?.map((aa, bb) => {
                       return (
                         <div key={bb} className="flex flex-col text-start">
