@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
 import { ModalProvider } from "@/provider/modal";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,9 @@ export default function RootLayout({
       <body className={clsx(inter.className, "w-full xl:w-11/12 mx-auto")}>
         <ModalProvider>{children}</ModalProvider>
       </body>
+      {!process.env.GOOGLE_ANALYTICS_ID ? null : (
+        <GoogleTagManager gtmId={process.env.GOOGLE_ANALYTICS_ID} />
+      )}
     </html>
   );
 }

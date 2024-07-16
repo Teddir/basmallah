@@ -1,6 +1,10 @@
 import { unstable_noStore as noStore } from "next/cache";
 import { promises as fs } from "fs";
 
+const BASE_URL = process.env.BASE_URL
+  ? process.env.BASE_URL
+  : "http://localhost:3000";
+
 export async function getSholat({
   city,
 }: {
@@ -107,9 +111,15 @@ export async function getAlmatsurat({
 
 async function readJsonFiles({ listMainHadist }: { listMainHadist: string[] }) {
   try {
-    const fileReadPromises = listMainHadist.map((a) =>
-      fs.readFile(process.cwd() + `/app/lib/json/hadist/${a}.json`, "utf8")
-    );
+    const fileReadPromises = listMainHadist.map(async (a) => {
+      const res = await fetch(`${BASE_URL}/api/hadist/${a}`, {
+        method: "GET",
+        cache: "no-cache",
+      });
+      const val = (await res.json()).results;
+
+      return val
+    });
 
     const fileContents = await Promise.all(fileReadPromises);
     const jsonData = fileContents.map((content, b) => {
@@ -155,10 +165,14 @@ export async function getHadist({
       });
       return datas.filter((a) => a.id.includes(search) || a.imam.includes(id));
     } else {
-      const val = await fs.readFile(
-        process.cwd() + `/app/lib/json/hadist/${id}.json`,
-        "utf8"
-      );
+      const res = await fetch(`${BASE_URL}/api/hadist/${id}`, {
+        method: "GET",
+        cache: "no-cache",
+      });
+      console.log(`${BASE_URL}/api/hadist/${id}`);
+      
+      const val = (await res.json()).results;
+
       const isVal: HadistItem[] = JSON.parse(val || "");
       return isVal
         .map((a, b) => {
