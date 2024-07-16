@@ -1,5 +1,6 @@
 import { promises as fs } from "fs";
 import { NextResponse } from "next/server";
+import path from "path";
 
 export async function GET(
   request: Request,
@@ -8,7 +9,7 @@ export async function GET(
   const id = params.id;
   try {
     const data = await fs.readFile(
-      process.cwd() + "/app/" + `lib/json/hadist/${id}.json`,
+      path.resolve("app/" + `lib/json/hadist/${id}.json`),
       "utf8"
     );
     return NextResponse.json({ ok: true, results: data }, { status: 200 });
