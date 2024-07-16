@@ -1,5 +1,4 @@
 import { unstable_noStore as noStore } from "next/cache";
-import { promises as fs } from "fs";
 
 const BASE_URL = process.env.BASE_URL
   ? process.env.BASE_URL

@@ -28,7 +28,7 @@ export default function BodySearch({
           type="text"
           className="peer block py-3 px-6 rounded-full bg-[#C6E5CF] w-full sm:w-[80%] sm:max-w-xl text-base focus:ring-[#5E7765] z-20 placeholder-gray-900 shadow-lg shadow-primary/25"
           defaultValue={searchValue}
-          placeholder="Cari Hadist"
+          placeholder="Search Hadist"
           onChange={(e) => handleSearch(e.target.value, "search")}
         />
         <div className="flex items-center sm:overflow-auto overflow-scroll max-w-[100vw] pr-6">

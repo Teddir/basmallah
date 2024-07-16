@@ -105,7 +105,7 @@ export default function Body({ dataHadist }: { dataHadist: HadistItem[] }) {
             type="text"
             className="peer block py-4 px-5 rounded-full bg-[#C6E5CF] w-[80%] sm:w-[40%] sm:max-w-xl text-base focus:ring-[#5E7765] z-20 placeholder-gray-900"
             defaultValue={searchParams.get("query")?.toString()}
-            placeholder="Cari Hadist"
+            placeholder="Search Hadist"
             onChange={(e) => handleSearch(e.target.value)}
           />
         </div>
