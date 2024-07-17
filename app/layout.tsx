@@ -7,6 +7,10 @@ import { GoogleTagManager } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const BASE_URL = process.env.BASE_URL
+  ? process.env.BASE_URL
+  : "http://localhost:3000";
+
 const GOOGLE_VERIF_DOMAIN_ID = !process.env.GOOGLE_VERIF_DOMAIN_ID
   ? ""
   : process.env.GOOGLE_VERIF_DOMAIN_ID;
@@ -15,9 +19,18 @@ const GOOGLE_ANALYTICS_ID = !process.env.GOOGLE_ANALYTICS_ID
   : process.env.GOOGLE_ANALYTICS_ID;
 
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: {
     default: "Basmallah",
     template: `%s - Basmallah`,
+  },
+  openGraph: {
+    title: `Basmallah`,
+    images: {
+      width: 1200,
+      height: 630,
+      url:"/images/favicon.png"
+    }
   },
   description:
     "Basmallah is an Islamic application that provides a comprehensive collection of Dzikir, Al-Quran, Hadith, and accurate prayer schedules to assist Muslims in their daily worship.",
@@ -45,6 +58,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  console.log(GOOGLE_ANALYTICS_ID);
+  
   return (
     <html lang="en">
       <head>
