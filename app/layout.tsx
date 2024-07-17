@@ -10,6 +10,9 @@ const inter = Inter({ subsets: ["latin"] });
 const GOOGLE_VERIF_DOMAIN_ID = !process.env.GOOGLE_VERIF_DOMAIN_ID
   ? ""
   : process.env.GOOGLE_VERIF_DOMAIN_ID;
+const GOOGLE_ANALYTICS_ID = !process.env.GOOGLE_ANALYTICS_ID
+  ? ""
+  : process.env.GOOGLE_ANALYTICS_ID;
 
 export const metadata: Metadata = {
   title: {
@@ -44,12 +47,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="color-scheme" content="light" />
+      </head>
       <body className={clsx(inter.className, "w-full xl:w-11/12 mx-auto")}>
         <ModalProvider>{children}</ModalProvider>
       </body>
-      {!process.env.GOOGLE_ANALYTICS_ID ? null : (
-        <GoogleTagManager gtmId={process.env.GOOGLE_ANALYTICS_ID} />
-      )}
+      <GoogleTagManager gtmId={GOOGLE_ANALYTICS_ID} />
     </html>
   );
 }
