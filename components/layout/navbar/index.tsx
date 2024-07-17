@@ -4,13 +4,13 @@ import { useModal } from "@/context/modal";
 import clsx from "clsx";
 import Image from "next/image";
 import React from "react";
-import { Poppins } from 'next/font/google';
+import { Poppins } from "next/font/google";
 
 const poppins = Poppins({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-poppins',
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-poppins",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 let text = "Menu";

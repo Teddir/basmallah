@@ -22,6 +22,7 @@ export async function getSholat({
 
     const res = await fetch(uri, {
       method: "GET",
+      cache: "default",
     });
     const datas = await res.json();
 
@@ -83,6 +84,7 @@ export async function getQuran({
 
     const res = await fetch(uri, {
       method: "GET",
+      cache: "default",
     });
     const response = await res.json();
     const datas = surah == 2 ? response : response.data;
@@ -110,19 +112,11 @@ export async function getAlmatsurat({
 
 async function readJsonFiles({ listMainHadist }: { listMainHadist: string[] }) {
   try {
-    const fileReadPromises = listMainHadist.map(async (a) => {
-      const res = await fetch(`${BASE_URL}/api/hadist/${a}`, {
-        method: "GET",
-        cache: "no-cache",
-      });
-      const val = (await res.json()).results;
-
-      return val
+    const fileReadPromises = listMainHadist.map((a) => {
+      const isVal = require(`./json/hadist/${a}.json`) ;
+      return isVal;
     });
-
-    const fileContents = await Promise.all(fileReadPromises);
-    const jsonData = fileContents.map((content, b) => {
-      const datas = JSON.parse(content);
+    const jsonData = fileReadPromises.map((datas, b) => {
       const isDatas = datas.map((element: { imam: string }) => {
         element.imam = listMainHadist[b];
         return element;
@@ -164,15 +158,7 @@ export async function getHadist({
       });
       return datas.filter((a) => a.id.includes(search) || a.imam.includes(id));
     } else {
-      const res = await fetch(`${BASE_URL}/api/hadist/${id}`, {
-        method: "GET",
-        cache: "no-cache",
-      });
-      console.log(`${BASE_URL}/api/hadist/${id}`);
-      
-      const val = (await res.json()).results;
-
-      const isVal: HadistItem[] = JSON.parse(val || "");
+      const isVal: HadistItem[] = require(`./json/hadist/${id}.json`);
       return isVal
         .map((a, b) => {
           a.imam = id;

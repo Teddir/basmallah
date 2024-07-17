@@ -44,7 +44,7 @@ export default function Detail({
           <div className="grid sm:grid-cols-2 gap-4 sm:w-[80%] xl:w-[50%]">
             {hadistTerkait.map((a, b) => {
               return (
-                <button key={b} className="p-2 rounded-md border text-start">
+                <button key={b} onClick={() =>  handleSearch(`${a.number}-${a.imam}`, "id")} className="p-2 rounded-md border text-start">
                   <p className="text-base font-light text-primary">
                     <span className="font-semibold">hadist-{a.number}</span> -{" "}
                     {a.imam.replaceAll("-", " ")}

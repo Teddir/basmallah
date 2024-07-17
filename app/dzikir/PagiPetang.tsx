@@ -1,4 +1,6 @@
-import React from "react";
+import clsx from "clsx";
+import { Noto_Naskh_Arabic } from "next/font/google";
+const naskh = Noto_Naskh_Arabic({ subsets: ["latin"] });
 
 export default function PagiPetang({ dataDzikir }: { dataDzikir: Dzikr[] }) {
   return (
@@ -18,7 +20,12 @@ export default function PagiPetang({ dataDzikir }: { dataDzikir: Dzikr[] }) {
               const showDivider = bb + 1 < a.dzikr_list.length;
               return (
                 <div key={bb} className="flex flex-col space-y-4">
-                  <p className="text-2xl text-right text-gray-900 leading-10 tracking-wider">
+                  <p
+                    className={clsx(
+                      naskh.className,
+                      "text-2xl text-right text-gray-900 leading-10 tracking-wider"
+                    )}
+                  >
                     {aa.text}
                   </p>
                   <div className="flex flex-col space-y-2">

@@ -37,7 +37,7 @@ const Modal: React.FC = () => {
   return (
     <div
       className="modal fixed inset-0 bg-white flex items-center justify-center z-50"
-      onClick={handleClose}
+      onClick={() => pathname == "/" ? null :handleClose}
     >
       <Image
         id="bintik"
