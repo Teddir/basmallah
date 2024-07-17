@@ -7,6 +7,10 @@ import { GoogleTagManager } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const GOOGLE_VERIF_DOMAIN_ID = !process.env.GOOGLE_VERIF_DOMAIN_ID
+  ? ""
+  : process.env.GOOGLE_VERIF_DOMAIN_ID;
+
 export const metadata: Metadata = {
   title: {
     default: "Basmallah",
@@ -28,6 +32,9 @@ export const metadata: Metadata = {
     "Islamic app",
     "Muslim worship",
   ],
+  verification: {
+    google: GOOGLE_VERIF_DOMAIN_ID,
+  },
 };
 
 export default function RootLayout({
