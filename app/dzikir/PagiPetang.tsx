@@ -23,7 +23,7 @@ export default function PagiPetang({ dataDzikir }: { dataDzikir: Dzikr[] }) {
                   <p
                     className={clsx(
                       naskh.className,
-                      "text-2xl text-right text-gray-900 leading-10 tracking-wider"
+                      "text-2xl text-right text-gray-900 leading-10"
                     )}
                   >
                     {aa.text}
