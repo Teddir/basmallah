@@ -10,7 +10,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
       <Image
         id="aksesoris-1"
         src="/aksesoris.svg"
-        alt="Vercel Logo"
+        alt="aksesoris"
         className="fixed top-0  w-1/2 left-0 z-50"
         width={100}
         height={100}

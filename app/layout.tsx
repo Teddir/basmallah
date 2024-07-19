@@ -27,6 +27,10 @@ export const metadata: Metadata = {
   description:
     "Basmallah is an Islamic application that provides a comprehensive collection of Dzikir, Al-Quran, Hadith, and accurate prayer schedules to assist Muslims in their daily worship.",
   keywords: [
+    "jadwal sholat",
+    "baca qur'an",
+    "baca hadist",
+    "baca dzikir",
     "Hadith",
     "Islamic teachings",
     "Prophet Muhammad sayings",

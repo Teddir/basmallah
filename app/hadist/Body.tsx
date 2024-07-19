@@ -51,7 +51,7 @@ export default function Body({ dataHadist }: { dataHadist: HadistItem[] }) {
           <Image
             id="aksesoris-1"
             src="/aksesoris-large.svg"
-            alt="Vercel Logo"
+            alt="aksesoris large"
             // fill
             width={520}
             height={520}
@@ -61,7 +61,7 @@ export default function Body({ dataHadist }: { dataHadist: HadistItem[] }) {
           <Image
             id="aksesoris-1"
             src="/aksesoris-large.svg"
-            alt="Vercel Logo"
+            alt="aksesoris large"
             // fill
             width={520}
             height={520}

@@ -25,13 +25,13 @@ export default function Navbar() {
   return (
     <nav className="px-4 flex relative z-20">
       <div
-        className="absolute right-0 -top-20 -translate-x-1/2 group/navbar cursor-pointer"
+        className="absolute right-0 -top-20 left-0 sm:left-auto sm:-translate-x-1/2 group/navbar cursor-pointer"
         onClick={handleShowModal}
       >
         <div className="relative w-full h-full items-center justify-center flex">
           <Image
             src="/bunga.svg"
-            alt="Vercel Logo"
+            alt="bunga"
             className="group-hover/navbar:rotate-90 transition-all duration-300 text-purple-400"
             width={150}
             height={100}

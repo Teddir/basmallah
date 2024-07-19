@@ -71,18 +71,18 @@ const ListSholat = ({
               >
                 <div className="border border-primary listBorder rounded-lg p-4 sm:p-6 hover:shadow-md hover:shadow-primary/40 space-y-6">
                   <div>
-                    <p className="font-medium text-lg">{data?.date}</p>
-                    <p className="text-gray-400 text-sm font-light">
+                    <p className="font-medium text-sm sm:text-lg">{data?.date}</p>
+                    <p className="text-gray-400 text-xs sm:text-sm font-light">
                       {data?.address}
                     </p>
                   </div>
-                  <div className="flex flex-wrap items-center gap-2 justify-between">
+                  <div className="flex items-center gap-2 justify-between">
                     {data?.time_pray?.map((aa, bb) => {
                       return (
                         <div key={bb} className="flex flex-col text-start">
-                          <p className="font-medium text-sm">{aa?.id}</p>
+                          <p className="font-medium text-xs sm:text-sm">{aa?.id}</p>
                           <p
-                            className={clsx("text-sm", {
+                            className={clsx("text-xs sm:text-sm", {
                               "text-primary": bb == activeTimeIndex,
                               "text-gray-400 font-light":
                                 bb !== activeTimeIndex,
@@ -94,7 +94,7 @@ const ListSholat = ({
                       );
                     })}
                   </div>
-                  <div className="font-light text-gray-300 text-xs">
+                  <div className="font-light text-gray-300 text-[0.7rem] sm:text-xs">
                     {data?.base_on}
                   </div>
                 </div>
