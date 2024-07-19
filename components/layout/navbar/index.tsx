@@ -32,7 +32,7 @@ export default function Navbar() {
           <Image
             src="/bunga.svg"
             alt="Vercel Logo"
-            className="dark:invert group-hover/navbar:rotate-90 transition-all duration-300 text-purple-400"
+            className="group-hover/navbar:rotate-90 transition-all duration-300 text-purple-400"
             width={150}
             height={100}
             priority

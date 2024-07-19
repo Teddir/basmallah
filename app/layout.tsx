@@ -24,14 +24,6 @@ export const metadata: Metadata = {
     default: "Basmallah",
     template: `%s - Basmallah`,
   },
-  openGraph: {
-    title: `Basmallah`,
-    images: {
-      width: 1200,
-      height: 630,
-      url:"/images/favicon.png"
-    }
-  },
   description:
     "Basmallah is an Islamic application that provides a comprehensive collection of Dzikir, Al-Quran, Hadith, and accurate prayer schedules to assist Muslims in their daily worship.",
   keywords: [
@@ -58,17 +50,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  console.log(GOOGLE_ANALYTICS_ID);
-  
   return (
     <html lang="en">
-      <head>
-        <meta name="color-scheme" content="light" />
-      </head>
       <body className={clsx(inter.className, "w-full xl:w-11/12 mx-auto")}>
         <ModalProvider>{children}</ModalProvider>
       </body>
-      <GoogleTagManager gtmId={GOOGLE_ANALYTICS_ID} />
+      {GOOGLE_ANALYTICS_ID?.length > 0 && (
+        <GoogleTagManager gtmId={GOOGLE_ANALYTICS_ID} />
+      )}
     </html>
   );
 }

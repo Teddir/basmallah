@@ -43,7 +43,7 @@ const Modal: React.FC = () => {
         id="bintik"
         src="/bintik-right.svg"
         alt="bintik Logo"
-        className="dark:invert fixed top-0 right-0 w-full"
+        className="fixed top-0 right-0 w-full"
         width={100}
         height={100}
         priority
@@ -52,7 +52,7 @@ const Modal: React.FC = () => {
         id="aksesoris"
         src="/aksesoris.svg"
         alt="aksesoris Logo"
-        className="dark:invert fixed -top-[5%] md:-top-[20%] sm:-top-[9%] -left-[8%] sm:-left-[10%] w-[220px] sm:w-2/4 md:w-2/6"
+        className="fixed -top-[5%] md:-top-[20%] sm:-top-[9%] -left-[8%] sm:-left-[10%] w-[220px] sm:w-2/4 md:w-2/6"
         width={100}
         height={100}
         priority
@@ -61,7 +61,7 @@ const Modal: React.FC = () => {
         id="aksesoris-rotated"
         src="/aksesoris.svg"
         alt="aksesoris Logo"
-        className="dark:invert fixed -top-[5%] md:-top-[20%] sm:-top-[9%] -right-[8%] sm:-right-[10%] w-[220px] sm:w-2/4 md:w-2/6 rotate-90"
+        className="fixed -top-[5%] md:-top-[20%] sm:-top-[9%] -right-[8%] sm:-right-[10%] w-[220px] sm:w-2/4 md:w-2/6 rotate-90"
         width={100}
         height={100}
         priority
@@ -70,7 +70,7 @@ const Modal: React.FC = () => {
         id="bunga"
         src="/bunga.svg"
         alt="bunga Logo"
-        className="dark:invert fixed w-2/3 sm:w-2/4 md:w-2/6 z-10"
+        className="fixed w-2/3 sm:w-2/4 md:w-2/6 z-10"
         width={100}
         height={100}
         priority
