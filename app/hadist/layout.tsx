@@ -3,7 +3,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Hadith Collection",
   description:
-    "Discover authentic Hadith from various collections, providing guidance and wisdom for everyday life. Explore and learn from the sayings of the Prophet Muhammad (peace be upon him) with Basmallah.",
+    "Temukan Hadits shahih dari berbagai koleksi, memberikan bimbingan dan hikmah dalam kehidupan sehari-hari. Jelajahi dan pelajari dari sabda Nabi Muhammad (saw) dengan Basmallah.",
 };
 
 export default function HadistLayout({

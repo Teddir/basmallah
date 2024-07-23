@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: `%s - Basmallah`,
   },
   description:
-    "Basmallah is an Islamic application that provides a comprehensive collection of Dzikir, Al-Quran, Hadith, and accurate prayer schedules to assist Muslims in their daily worship.",
+    "Basmallah adalah aplikasi Islami yang menyediakan kumpulan Dzikir, Al-Quran, Hadits, dan jadwal sholat yang lengkap untuk membantu umat Islam dalam menjalankan ibadah sehari-hari.",
   keywords: [
     "jadwal sholat",
     "baca qur'an",

@@ -4,10 +4,16 @@ const BASE_URL = process.env.BASE_URL
   ? process.env.BASE_URL
   : "http://localhost:3000";
 
+interface ObjGeo {
+  longitude: number;
+  latitude: number;
+}
 export async function getSholat({
   city,
+  geo,
 }: {
   city?: string;
+  geo?: ObjGeo;
 }): Promise<DataSholat[]> {
   try {
     noStore();
@@ -18,7 +24,10 @@ export async function getSholat({
     province =
       province.charAt(0).toUpperCase() + province.slice(1).toLowerCase();
 
-    const uri = `https://api.aladhan.com/v1/calendarByCity/${years}/${mounth}?city=${province}&country=Indonesia&method=20`;
+    const uri =
+      !geo?.latitude || !geo?.longitude
+        ? `https://api.aladhan.com/v1/calendarByCity/${years}/${mounth}?city=${province}&country=Indonesia&method=20`
+        : `https://api.aladhan.com/v1/hijriCalendar/${years}/${mounth}?latitude=${geo.latitude}&longitude=${geo.longitude}&method=20`;
 
     const res = await fetch(uri, {
       method: "GET",
@@ -113,7 +122,7 @@ export async function getAlmatsurat({
 async function readJsonFiles({ listMainHadist }: { listMainHadist: string[] }) {
   try {
     const fileReadPromises = listMainHadist.map((a) => {
-      const isVal = require(`./json/hadist/${a}.json`) ;
+      const isVal = require(`./json/hadist/${a}.json`);
       return isVal;
     });
     const jsonData = fileReadPromises.map((datas, b) => {

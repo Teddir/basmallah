@@ -19,3 +19,66 @@
       color-scheme: light;
   }
 }
+
+.ted::after {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  z-index: -1;
+  content: 'Quran';
+  rotate: calc(90deg);
+  font-family: monospace;
+  text-transform: uppercase;
+  font-size: 12em;
+  letter-spacing: 0px;
+  color: rgb(168 215 181 / 0.16);
+  right: 0;
+}
+
+
+.ted1::after {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  z-index: -1;
+  content: 'Dzikir';
+  rotate: calc(90deg);
+  font-family: monospace;
+  text-transform: uppercase;
+  font-size: 12em;
+  letter-spacing: 0px;
+  color: rgb(156 163 175 / 0.16);
+  right: 0;
+}
+
+.ted2::after {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  z-index: -1;
+  content: 'Hadist';
+  rotate: calc(90deg);
+  font-family: monospace;
+  text-transform: uppercase;
+  font-size: 12em;
+  letter-spacing: 0px;
+  color: rgb(250 204 21 / 0.16);
+  right: 0;
+}
+
+
+.ted3::after {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  z-index: -1;
+  content: 'Sholat';
+  rotate: calc(90deg);
+  font-family: monospace;
+  text-transform: uppercase;
+  font-size: 12em;
+  letter-spacing: 0px;
+  color: rgb(192 132 252 / 0.16);
+  right: 0;
+}
+

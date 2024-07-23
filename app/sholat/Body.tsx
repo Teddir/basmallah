@@ -10,7 +10,7 @@ const today = new Date().toLocaleDateString("en-US", {
   day: "numeric",
 });
 
-const calculateTimeDifference = (targetTime: string, isNextDay: boolean) => {
+export const calculateTimeDifference = (targetTime: string, isNextDay: boolean) => {
   const [hours, minutes] = targetTime.split(":").map(Number);
   const targetDate = new Date();
   targetDate.setHours(hours, minutes, 0, 0);
@@ -32,7 +32,7 @@ const calculateTimeDifference = (targetTime: string, isNextDay: boolean) => {
     : `${hoursDiff} Jam, ${minutesDiff} Menit`;
 };
 
-const findNextPrayerTime = (datas: DataSholat[], activeIndex: number) => {
+export const findNextPrayerTime = (datas: DataSholat[], activeIndex: number) => {
   const now = new Date();
   const currentTime = now.getHours() * 60 + now.getMinutes();
 

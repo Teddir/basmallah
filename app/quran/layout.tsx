@@ -3,7 +3,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Al-Quran",
   description:
-    "Explore the complete Al-Quran in Basmallah. Access the holy book of Islam with translations, tafsir, and easy navigation for Muslims seeking guidance and knowledge.",
+    "Jelajahi Al-Quran lengkap di Basmallah. Akses kitab suci Islam dengan terjemahan, tafsir, dan navigasi yang mudah bagi umat Islam yang mencari bimbingan dan ilmu.",
 };
 
 export default function QuranLayout({

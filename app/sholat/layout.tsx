@@ -3,7 +3,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Prayer Schedule",
   description:
-    "Access accurate prayer schedules on Basmallah. Stay updated with precise prayer timings and guidance for Muslims to fulfill their daily prayers.",
+    "Akses jadwal sholat akurat di Basmallah. Dapatkan informasi terkini tentang waktu sholat yang tepat dan panduan bagi umat Islam untuk menunaikan sholat harian mereka.",
 };
 
 export default function SholatLayout({

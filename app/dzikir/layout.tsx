@@ -3,7 +3,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Dzikir",
   description:
-    "Discover a collection of daily Dzikir in Basmallah. An Islamic app that helps Muslims remember Allah through Dzikir, with complete and easily accessible guides every day.",
+    "Temukan kumpulan Dzikir harian di Basmallah. Sebuah aplikasi Islami yang membantu umat Islam mengingat Allah melalui Dzikir, dengan panduan lengkap dan mudah diakses setiap hari.",
 };
 
 export default function DzikirLayout({
