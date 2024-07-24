@@ -127,8 +127,8 @@ export default function Home() {
               onClick={() => router.push("/quran")}
               className="h-full max-h-[20dvh]  bg-primary p-3 justify-between w-full flex flex-col rounded-xl"
             >
-              <p className="uppercase font-mono">Baca Qur'an</p>
-              <p>Baca Qur'an</p>
+              <p className="uppercase font-mono">Baca Qur&apos;an</p>
+              <p>Baca Qur&apos;an</p>
             </button>
           </div>
         </div>
