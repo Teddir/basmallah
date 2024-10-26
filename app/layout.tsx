@@ -3,7 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
 import { ModalProvider } from "@/provider/modal";
-import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleTagManager, } from "@next/third-parties/google";
+import GoogleAdsense from "@/components/GoogleAdsense";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,6 +18,9 @@ const GOOGLE_VERIF_DOMAIN_ID = !process.env.GOOGLE_VERIF_DOMAIN_ID
 const GOOGLE_ANALYTICS_ID = !process.env.GOOGLE_ANALYTICS_ID
   ? ""
   : process.env.GOOGLE_ANALYTICS_ID;
+  const GOOGLE_ADSENSE = !process.env.GOOGLE_ADSENSE
+    ? ""
+    : process.env.GOOGLE_ADSENSE;
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -25,7 +29,7 @@ export const metadata: Metadata = {
     template: `%s - Basmallah`,
   },
   description:
-    "Basmallah adalah aplikasi Islami yang menyediakan kumpulan Dzikir, Al-Quran, Hadits, dan jadwal sholat yang lengkap untuk membantu umat Islam dalam menjalankan ibadah sehari-hari.",
+    "Basmallahは、イスラム教徒が日々の礼拝をサポートするためのアプリケーションであり、ディクル、アル・コーラン、ハディース、礼拝スケジュールなどの豊富なコンテンツを提供します。",
   keywords: [
     "jadwal sholat",
     "baca qur'an",
@@ -43,6 +47,22 @@ export const metadata: Metadata = {
     "prayer schedules",
     "Islamic app",
     "Muslim worship",
+    "礼拝スケジュール",
+    "コーランを読む",
+    "ハディースを読む",
+    "ディクルを読む",
+    "ハディース",
+    "イスラム教の教え",
+    "預言者ムハンマドの言葉",
+    "バスマラ",
+    "日々のハディース",
+    "ハディース集",
+    "ムスリムの信仰",
+    "ディクル",
+    "アル・コーラン",
+    "礼拝のスケジュール",
+    "イスラムアプリ",
+    "ムスリムの礼拝"
   ],
   verification: {
     google: GOOGLE_VERIF_DOMAIN_ID,
@@ -61,6 +81,9 @@ export default function RootLayout({
       </body>
       {GOOGLE_ANALYTICS_ID?.length > 0 && (
         <GoogleTagManager gtmId={GOOGLE_ANALYTICS_ID} />
+      )}
+      {GOOGLE_ADSENSE?.length > 0 && (
+       <GoogleAdsense pId={GOOGLE_ADSENSE} />
       )}
     </html>
   );

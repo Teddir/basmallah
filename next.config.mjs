@@ -8,6 +8,7 @@ const nextConfig = {
     BASE_URL: process.env.BASE_URL,
     GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
     GOOGLE_VERIF_DOMAIN_ID: process.env.GOOGLE_VERIF_DOMAIN_ID,
+    GOOGLE_ADSENSE: process.env.GOOGLE_ADSENSE,
   },
 };
 
