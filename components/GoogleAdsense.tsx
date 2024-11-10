@@ -10,9 +10,10 @@ const GoogleAdsense: React.FC<Props> = ({ pId }) => {
   }
   return (
     <Script
+      id="Adsense-id"
+      data-ad-client={`ca-pub-${pId}`}
       async
-      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-${pId}`}
-      crossOrigin="anonymous"
+      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js`}
       strategy="afterInteractive"
     />
   );

@@ -26,11 +26,19 @@ export const calculateTimeDifference = (targetTime: string, isNextDay: boolean) 
 
   const hoursDiff = Math.floor(diff / (1000 * 60 * 60));
   const minutesDiff = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const secondsDiff = Math.floor((diff % (1000 * 60)) / 1000);
 
-  return hoursDiff <= 0
-    ? `${minutesDiff} Menit`
-    : `${hoursDiff} Jam, ${minutesDiff} Menit`;
+  if (hoursDiff <= 0) {
+    if (minutesDiff <= 0) {
+      return `${secondsDiff} Detik`;
+    } else {
+      return `${minutesDiff} Menit, ${secondsDiff} Detik`;
+    }
+  } else {
+    return `${hoursDiff} Jam, ${minutesDiff} Menit, ${secondsDiff} Detik`;
+  }
 };
+
 
 export const findNextPrayerTime = (datas: DataSholat[], activeIndex: number) => {
   const now = new Date();
@@ -84,14 +92,34 @@ export default function Body({ datas = [] }: { datas: DataSholat[] }) {
   }, [datas]);
 
   useEffect(() => {
+    let interval: NodeJS.Timeout | undefined;
+
     if (datas.length > 0 && activeIndex >= 0) {
       const { nextPrayer, isNextDay } = findNextPrayerTime(datas, activeIndex);
 
       if (nextPrayer) {
         setNextPrayerTime(`${nextPrayer.id}, ${nextPrayer.value}`);
-        setTimeRemaining(calculateTimeDifference(nextPrayer.value, isNextDay));
+
+         // Function to calculate and update remaining time
+         const updateTimeRemaining = () => {
+          const remainingTime = calculateTimeDifference(nextPrayer.value, isNextDay);
+          setTimeRemaining(remainingTime);
+        };
+
+        // Set the initial remaining time
+        updateTimeRemaining();
+
+        // Update the remaining time every second
+        interval = setInterval(updateTimeRemaining, 1000); // Every 1 second
       }
     }
+
+    // Clean up the interval when the component is unmounted or when datas or activeIndex changes
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
   }, [datas, activeIndex]);
 
   const handleClickNext = () => {

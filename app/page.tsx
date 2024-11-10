@@ -5,6 +5,7 @@ import { calculateTimeDifference, findNextPrayerTime } from "./sholat/Body";
 import { getSholat } from "./lib/data";
 import { useModal } from "@/context/modal";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const today = new Date().toLocaleDateString("en-US", {
   day: "numeric",
@@ -82,14 +83,37 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    let interval: NodeJS.Timeout | undefined;
+
     if (datas.length > 0 && activeIndex >= 0) {
       const { nextPrayer, isNextDay } = findNextPrayerTime(datas, activeIndex);
 
       if (nextPrayer) {
         setNextPrayerTime(`${nextPrayer.id}, ${nextPrayer.value}`);
-        setTimeRemaining(calculateTimeDifference(nextPrayer.value, isNextDay));
+
+        // Function to calculate and update remaining time
+        const updateTimeRemaining = () => {
+          const remainingTime = calculateTimeDifference(
+            nextPrayer.value,
+            isNextDay
+          );
+          setTimeRemaining(remainingTime);
+        };
+
+        // Set the initial remaining time
+        updateTimeRemaining();
+
+        // Update the remaining time every second
+        interval = setInterval(updateTimeRemaining, 1000); // Every 1 second
       }
     }
+
+    // Clean up the interval when the component is unmounted or when datas or activeIndex changes
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
   }, [datas, activeIndex]);
 
   return (
@@ -123,46 +147,46 @@ export default function Home() {
       <div className="grid xl:grid-cols-4 sm:grid-cols-2 grid-cols-1 w-full">
         <div className="ted h-screen max-h-screen p-2  bg-primary/25 relative flex w-full overflow-hidden">
           <div className="h-full translate-y-[79.5%] group-hover:-translate-y-full transition-all delay-72 duration-1000  w-full flex">
-            <button
-              onClick={() => router.push("/quran")}
+            <Link
+              href={"/quran"}
               className="h-full max-h-[20dvh]  bg-primary p-3 justify-between w-full flex flex-col rounded-xl"
             >
               <p className="uppercase font-mono">Baca Qur&apos;an</p>
               <p>Baca Qur&apos;an</p>
-            </button>
+            </Link>
           </div>
         </div>
         <div className="ted1 h-screen max-h-screen p-2  bg-white/25 relative flex w-full overflow-hidden">
           <div className="h-full translate-y-[79.5%] group-hover:-translate-y-full transition-all delay-72 duration-1000  w-full flex">
-            <button
-              onClick={() => router.push("/quran")}
+            <Link
+              href={"/dzikir"}
               className="h-full max-h-[20dvh]  bg-gray-400 p-3 justify-between w-full flex flex-col rounded-xl"
             >
               <p className="uppercase font-mono">Baca Dzikir</p>
               <p>Baca Dzikir</p>
-            </button>
+            </Link>
           </div>
         </div>
         <div className="ted2 h-screen max-h-screen p-2  bg-yellow-400/25 relative flex w-full overflow-hidden">
           <div className="h-full translate-y-[79.5%] group-hover:-translate-y-full transition-all delay-72 duration-1000  w-full flex">
-            <button
-              onClick={() => router.push("/quran")}
+            <Link
+              href={'/hadist'}
               className="h-full max-h-[20dvh]  bg-yellow-400 p-3 justify-between w-full flex flex-col rounded-xl"
             >
               <p className="uppercase font-mono">Baca Hadist</p>
               <p>Baca Hadist</p>
-            </button>
+            </Link>
           </div>
         </div>
         <div className="ted3 h-screen max-h-screen p-2  bg-purple-400/25 relative flex w-full overflow-hidden">
           <div className="h-full translate-y-[79.5%] group-hover:-translate-y-full transition-all delay-72 duration-1000  w-full flex">
-            <button
-              onClick={() => router.push("/quran")}
+            <Link
+              href={'/sholat'}
               className="h-full max-h-[20dvh]  bg-purple-400 p-3 justify-between w-full flex flex-col rounded-xl"
             >
               <p className="uppercase font-mono">Jadwal Sholat</p>
               <p>Jadwal Sholat</p>
-            </button>
+            </Link>
           </div>
         </div>
       </div>

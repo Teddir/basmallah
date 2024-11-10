@@ -5,6 +5,8 @@ import clsx from "clsx";
 import { ModalProvider } from "@/provider/modal";
 import { GoogleTagManager } from "@next/third-parties/google";
 import GoogleAdsense from "@/components/GoogleAdsense";
+import { Suspense } from "react";
+import { AppProgressBar } from "@/components/progressBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -78,6 +80,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={clsx(inter.className, "w-full xl:w-11/12 mx-auto")}>
         <ModalProvider>{children}</ModalProvider>
+        <Suspense>
+          <AppProgressBar
+            height="4px"
+            options={{ showSpinner: false }}
+            shallowRouting
+          />
+        </Suspense>
       </body>
       {GOOGLE_ANALYTICS_ID?.length > 0 && (
         <GoogleTagManager gtmId={GOOGLE_ANALYTICS_ID} />
